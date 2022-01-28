@@ -1,0 +1,61 @@
+<!-- begin #content -->
+<div id="content" class="content" style="padding-top: 0px">
+
+    <!-- begin submenu -->
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col text-right">
+        </div>
+    </div>
+    <!-- ends submenu -->
+
+    <h1 class="page-header">San Cristobal Cobranzas</h1>
+
+    <!-- Upload file 2 -->
+    <div class="row">
+        <div class="col-xs-6" style="margin-bottom: 20px">
+            <!--ng-repeat="card in cardCollection"-->
+            <div class="card border-8" style="border-top: 4px solid red;">
+                <div class="card-body col-xs-12">
+                    <form name="form">
+                        <div class="col-xs-12" style="margin-bottom: 10px">
+                            <div> <strong>Desde:</strong> </div>
+                            <div class="input-group date" data-provide="datepicker" id="dateFrom">
+                                <input type="text" class="form-control" ng-model="dateFrom" disabled>
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" style="margin-bottom: 10px">
+                            <div> <strong>Hasta:</strong> </div>
+                            <div class="input-group date" data-provide="datepicker" id="dateTo">
+                                <input type="text" class="form-control" ng-model="dateTo">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" style="margin-bottom: 10px">
+                            <div> <strong>TaxID:</strong> </div>
+                            <!--<input type="text" class="form-control" ng-model="taxId">-->
+                            <select class="form-control" ng-model="taxSelected" ng-options="tax.taxId for tax in taxs track by tax.id"> <!-- ng-options="tax.label for tax in taxs track by tax.id">-->
+                                <option value="" selected="selected">---- Seleccione Opcion ----</option>
+                            </select>
+
+                        </div>
+                        <!--<input type="text" class="form-control" ng-model="ProducerCode">-->
+                        <!-- <div class="col-xs-12" style="margin-bottom: 10px">
+                            <div> <strong>Código de productor:</strong> </div>
+                            <select class="form-control" ng-model="codProdSelected" ng-options="cod.codigoProductor for cod in codProdList track by cod.id">
+                                <option value="" selected="selected">---- Seleccione Opcion ----</option>
+                            </select>
+                        </div> -->
+
+                        <div class="col-xs-12" style="margin-bottom: 10px">
+                            <button type="submit" style="width: 100%;" ng-click="submit()">Procesar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img ng-if="loading" src="../assets/img/ajax-loader.gif" alt="">
+
+
+</div>

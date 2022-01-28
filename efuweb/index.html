@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainapp">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <title>TOYOTA | Home</title> -->
+    <title data-ng-bind="'TOYOTA | ' + $state.current.data.pageTitle">TOYOTA | </title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="../assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="../assets/css/default/theme/red.min.css" rel="stylesheet" />
+    <link href="../assets/css/default/globemind.css" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN BASE ANGULAR JS ================== -->
+    <script src="../assets/plugins/angular/angular.min.js"></script>
+    <!-- <script src="../assets/plugins/angular-route/angular-route.min.js"></script> -->
+    <script src="../assets/plugins/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../assets/plugins/angular-ui-router/release/stateEvents.min.js"></script>
+    <script src="../assets/plugins/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="../assets/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="../assets/plugins/angular-cookies/angular-cookies.min.js"></script>
+    <script src="../assets/plugins/angular-translate/angular-translate.min.js"></script>
+    <!-- ================== END BASE ANGULAR JS ================== -->
+
+    <!-- ================== BEGIN NG-FILE-UPLOAD ================== -->
+    <script src="../assets/plugins/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <!-- for no html5 browsers support -->
+    <script src="../assets/plugins/ng-file-upload/ng-file-upload.min.js"></script>
+    <!-- ================== END NG-FILE-UPLOAD ================== -->
+
+
+</head>
+<!-- <body ng-controller="mainCtrl"> -->
+
+<body>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade show"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+
+        <ui-view></ui-view>
+
+        <!-- begin scroll to top btn -->
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top" style="bottom: 0px"><i class="fa fa-angle-up"></i></a>
+        <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/js/theme/default.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN ALERTS ================== -->
+    <script src="../assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <script src="../assets/plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../assets/js/demo/ui-modal-notification.demo.js"></script>
+    <!-- ================== END ALERTS ================== -->
+
+
+    <!-- CONF -->
+    <script src="scripts/conn.js"></script>
+    <script src="scripts/languages/lang.js"></script>
+    <script src="scripts/config.js"></script>
+
+    <!-- Directives -->
+    <script src="scripts/directives/headerBlock.js"></script>
+    <script src="scripts/directives/menuBlock.js"></script>
+
+    <!-- Services -->
+    <script src="scripts/services/userService.js"></script>
+    <script src="scripts/services/allianzPortfolioService.js"></script>
+    <script src="scripts/services/allianzCommissionService.js"></script>
+    <script src="scripts/services/triumphNewsService.js"></script>
+    <script src="scripts/services/cajaCarteraService.js"></script>
+    <script src="scripts/services/mapfreNewsService.js"></script>
+    <script src="scripts/services/scriMovementsService.js"></script>
+    <script src="scripts/services/cajaNewsService.js"></script>
+    <script src="scripts/services/sancorService.js"></script>
+    <script src="scripts/services/changeStateService.js"></script>
+    <script src="scripts/services/scriCollectionsService.js"></script>
+    <script src="scripts/services/altaCoberturaService.js"></script>
+    <script src="scripts/services/edicionCoberturaService.js"></script>
+    <script src="scripts/services/reporteCoberturaService.js"></script>
+
+
+    <!-- Controllers -->
+    <script src="scripts/controllers/mainCtrl.js"></script>
+    <script src="scripts/controllers/menuCtrl.js"></script>
+    <script src="scripts/controllers/allianzPortfolioCtrl.js"></script>
+    <script src="scripts/controllers/allianzCommissionCtrl.js"></script>
+    <script src="scripts/controllers/cajaCarteraCtrl.js"></script>
+    <script src="scripts/controllers/mapfreNewsCtrl.js"></script>
+    <script src="scripts/controllers/triumphNewsCtrl.js"></script>
+    <script src="scripts/controllers/scriMovementsCtrl.js"></script>
+    <script src="scripts/controllers/cajaNewsCtrl.js"></script>
+    <script src="scripts/controllers/sancorCtrl.js"></script>
+    <script src="scripts/controllers/changeStateCtrl.js"></script>
+    <script src="scripts/controllers/scriCollectionsCtrl.js"></script>
+    <script src="scripts/controllers/altaCoberturaCtrl.js"></script>
+    <script src="scripts/controllers/edicionCoberturaCtrl.js"></script>
+    <script src="scripts/controllers/reporteCoberturaCtrl.js"></script>
+
+
+    <script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+</body>
+
+</html>

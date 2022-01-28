@@ -1,0 +1,107 @@
+	<!-- begin #content --> 
+	<div id="content" class="content" style="padding-top: 0px">
+		<!-- <div class="row"> -->
+			<!-- begin breadcrumb -->
+			<!-- <ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Library</a></li>
+				<li class="breadcrumb-item active"><a href="javascript:;">Data</a></li>
+			</ol> -->
+			<!-- end breadcrumb -->
+		<!-- </div> -->
+		<!-- begin page-header -->
+		<!-- <h1 class="page-header">Page Header <small>header small text goes here...</small></h1> -->
+		<!-- end page-header -->
+		
+		<!-- begin submenu -->
+		<div class="row" style="margin-bottom: 10px;">
+			<div class="btn-group" style="margin-left: auto;">
+			  <button class="btn btn-sm btn-white" ng-class="{active: listType == 'favoritos'}" ui-sref="app.home({ param: 'favoritos' })">Favoritos</button>
+			  <button class="btn btn-sm btn-white" ng-class="{active: listType == 'recientes'}" ui-sref="app.home({ param: 'recientes' })">Recientes</button>
+			</div>
+			<!-- dropdown -->
+			<!-- <div class="btn-group" style="margin-left: 20px">
+				<a href="javascript:;" class="btn btn-sm btn-white">Ordenar</a>
+				<a href="#" data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle"><b class="caret"></b></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="javascript:;" class="dropdown-item">Nombre</a>
+					<a href="javascript:;" class="dropdown-item">Fecha</a>
+				</div>
+			</div> -->
+			<!-- dropdown -->
+		</div>
+		<!-- ends submenu -->
+		
+		<!-- begin cards panel -->
+		<div class="row">
+			<!-- begin cards -->
+			<div class="col-xs-3" style="margin-bottom: 20px" ng-repeat="rcard in cardCollection">
+				<div class="card border-8">
+					<div class="card-header">
+						<!-- <a href="" class="btn btn-danger btn-icon btn-circle btn-xs" style="line-height: 13px;"><i class="fa fa-thumbtack"></i></a> -->
+						<a href="" class="btn btn-default btn-icon btn-circle btn-xs" style="line-height: 13px;" ng-click="btnRemoveCard($index)"><i class="fa fa-times"></i></a>
+					</div>
+					<div class="card-body">
+						<h4 class="card-title m-t-0">{{rcard.codigo}}</h4>
+						<h6 class="card-subtitle m-b-10 text-muted">{{rcard.descripcion}}</h6>
+						<p class="card-text">
+							<div style="margin-bottom: 5px;cursor: pointer;" ng-click="btnCountActions(rcard.codigo, 'all', rcard.id)"> <strong>Total:</strong> {{rcard.cnt_total}}</div>
+							<div style="margin-bottom: 5px;cursor: pointer;" ng-click="btnCountActions(rcard.codigo, 'pend', rcard.id)"> <strong>Pendientes mio:</strong> {{rcard.cnt_mios}}</div>
+							<div style="cursor: pointer;" ng-click="btnCountActions(rcard.codigo, 'auth', rcard.id)"> <strong>Para Autorizar:</strong> {{rcard.cnt_autorizar}}</div>
+						</p>
+						<!-- <a href="javascript:;" class="card-link" title="Exportar Excel"><i class="far fa-file-excel"></i></a>
+						<a href="javascript:;" class="card-link" title="Exportar PDF"><i class="far fa-file-pdf"></i></a> -->
+					</div>
+					<div class="card-footer f-w-600">
+						<div style="float: left;padding-top: 6px">
+							<a href="javascript:;" class="card-link" title="Exportar Excel"><i class="far fa-file-excel fa-lg"></i></a>
+							<a href="javascript:;" class="card-link" title="Exportar PDF" style="margin-left: 5px;"><i class="far fa-file-pdf fa-lg"></i></a>
+						</div>
+						<div>
+							<!-- <a href="" class="btn btn-success btn-icon btn-circle"><i class="fa fa-plus"></i></a> -->
+							<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnCountActions(rcard.codigo, 'all', rcard.id)"><i class="fa fa-chevron-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end cards -->
+		</div>
+		<!-- end cards panel -->
+	</div>
+	<!-- end #content -->
+
+	<!-- Modal CUSTOMER INFORMATION-->
+	<div class="modal fade" id="addCardModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Agregar Tarjeta</h4>
+					<a href="" class="btn btn-danger btn-icon btn-circle btn-xs" data-dismiss="modal"><i class="fa fa-times"></i></a>
+					<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:#fff;">×</button> -->
+				</div>
+				<div class="modal-body">
+					<p>
+						<div class="form-group">
+                        	<label>Seleccione un Programa </label>
+	                        <select class="form-control input-sm" ng-model="addProgram" ng-options="prg.descripcion for prg in programsCollection track by prg.id" >
+	                        </select> 
+	                    </div>
+					</p>
+				</div>
+				<div class="modal-footer" style="padding: 7px;">
+					<a href="javascript:;" class="btn btn-white btn-sm" data-dismiss="modal">Canclar</a>
+					<a href="javascript:;" class="btn btn-success btn-sm" ng-click="btnAddCard()">Agregar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- BUTTON ADD -->
+	<div class="row text-right" style="padding-right: 20px;position: fixed; bottom: 30px;right: 12px;">
+		<a href="" class="btn btn-danger btn-icon btn-circle btn-lg" ng-click="btnAddCardModal()">
+			<i class="fas fa-plus"></i>
+		</a>
+    </div>  
+
+

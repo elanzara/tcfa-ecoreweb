@@ -1,0 +1,48 @@
+<!-- begin #content -->
+<div id="content" class="content" style="padding-top: 0px">
+
+    <!-- begin submenu -->
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col text-right">
+        </div>
+    </div>
+    <!-- ends submenu -->
+
+    <h1 class="page-header">La Caja Cartera</h1>
+
+    <!-- Upload file 2 -->
+    <div class="row">
+        <div class="col-xs-6" style="margin-bottom: 20px">
+            <!--ng-repeat="card in cardCollection"-->
+            <div class="card border-8" style="border-top: 4px solid red;">
+                <div class="card-body">
+                    <form name="form">
+                        <!--ng-app="fileUpload" ng-controller="MyCtrl"-->
+                        <div class="col-xs-12" style="margin-bottom: 10px">
+                            <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'*/*'" ngf-accept="'*/*'" ngf-max-size="40MB" ngf-min-height="100" ngf-resize="{width: 100%, height: 100%}">
+                                <button><strong>Seleccionar archivo a incorporar</strong></button>
+                                <!-- <label ng-model="file">{{file}}</label> -->
+                                <input ng-model="file.name" style="width: 65%;" disabled></input>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" style="margin-bottom: 10px">
+                            <div ngf-drop ngf-max-size="40MB" ng-model="file" class="drop-box">
+                                <textarea rows="4" cols="70" disabled>Arrastrar y dejar</textarea>
+                            </div>
+                        </div>
+                        <!-- Multiple files
+        <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
+        Drop files:
+        <div ngf-drop ng-model="files" class="drop-box">Drop</div> -->
+                        <div class="col-xs-12" style="margin-bottom: 10px">
+                            <button type="submit" style="width: 100%;" ng-click="submit()">Subir y Procesar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img ng-if="loading" src="../assets/img/ajax-loader.gif" alt="">
+
+
+</div>

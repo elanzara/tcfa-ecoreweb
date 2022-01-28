@@ -1,0 +1,200 @@
+<!-- begin #content --> 
+<div id="content" class="content" style="padding-top: 0px">
+
+	<!-- begin submenu -->
+		<div class="row" style="margin-bottom: 10px;">
+			<!-- <div class="col-xs-3"> -->
+				<!-- begin breadcrumb -->
+				<!-- <ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+					<li class="breadcrumb-item"><a href="javascript:;">Configuracion</a></li>
+					<li class="breadcrumb-item active"><a href="javascript:;">Grupos</a></li>
+				</ol> -->
+				<!-- end breadcrumb -->
+			<!-- </div> -->
+
+			<div class="col text-right">
+				<div class="btn-group col-4" style="margin-left: auto;">
+					<div class="btn-group col" >
+					  <button class="btn btn-sm btn-white " ng-class="{active: resultType == 'all'}" ng-click="btnFilterActions('all')">Todos</button>
+					  <button class="btn btn-sm btn-white " ng-class="{active: resultType == 'pend'}" ng-click="btnFilterActions('pend')">Pendientes</button>
+					  <button class="btn btn-sm btn-white " ng-class="{active: resultType == 'auth'}" ng-click="btnFilterActions('auth')">A Autorizar</button>
+					  <button class="btn btn-sm btn-white" style="margin-left: 10px" ng-click="btnSearchModal()"><i class="fa fa-search"></i></button>
+					</div>
+				</div>
+				<!-- dropdown -->
+				<!-- <div class="btn-group" style="margin-left: 10px">
+					<a href="javascript:;" class="btn btn-sm btn-white">Ordenar</a>
+					<a href="" data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle"><b class="caret"></b></a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="" class="dropdown-item">Nombre</a>
+						<a href="" class="dropdown-item">Fecha</a>
+					</div>
+				</div>
+				<div class="btn-group" style="margin-left: 10px">
+					<a href="javascript:;" class="btn btn-sm btn-white">Acciones</a>
+					<a href="" data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle"><b class="caret"></b></a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="" class="dropdown-item">Exportar Excel</a>
+						<a href="" class="dropdown-item">Exportar PDF</a>
+					</div>
+				</div> -->
+				<!-- dropdown -->
+			</div>
+		</div>
+		<!-- ends submenu -->
+	
+	<h1 class="page-header">ABM de Perfiles</h1>
+
+	<!-- begin cards panel -->
+	<div class="row">
+		
+		<!-- begin cards -->
+		<div class="col-xs-3" style="margin-bottom: 20px" ng-repeat="card in cardCollection">
+			<div class="card border-8" style="border-top: 4px solid red;">
+				<div class="card-body">
+					<h4 class="card-title m-t-0">{{card.descripcion}} </h4>
+					<h6 class="card-subtitle m-b-10 text-muted"><span class="label label-theme">{{card.codigo}}</span></h6>
+					<p class="card-text">
+						<div> <strong>Creado por:</strong> {{card.creadoPor}}</div>
+						<div> <strong>Creado en:</strong> {{card.creadoEn}}</div>
+						<div> <strong>Autorizado por:</strong> {{card.autorizadoPor}}</div>
+						<div> <strong>Autorizado en:</strong> {{card.autorizadoEn}}</div>
+					</p>
+				</div>
+				<div class="card-footer f-w-600">
+					<div style="float: left;padding-top: 6px">
+						<a href="javascript:;" class="card-link" title="Exportar Excel"><i class="far fa-file-excel fa-lg"></i></a>
+						<a href="javascript:;" class="card-link" title="Exportar PDF" style="margin-left: 5px;"><i class="far fa-file-pdf fa-lg"></i></a>
+					</div>
+					<div>
+						<!-- <a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnRemoveCard($index)"><i class="fa fa-trash-alt"></i></a> -->
+						<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnEditModal($index, 2)" ng-if="acctionsCollection.modificacion" title="Modificación"><i class="far fa-edit"></i></a>
+						<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnRemoveCard($index, 3)" ng-if="acctionsCollection.baja" title="Baja"><i class="fa fa-trash-alt"></i></a>
+						<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnEditModal($index, 8)" ng-if="acctionsCollection.consulta" title="Consulta"><i class="fas fa-search"></i></a>
+						<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnEditModal($index, 4)" ng-if="acctionsCollection.modificacion_pend" title="Modificación de registro pendiente"><i class="far fa-edit"></i></a>
+						<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnRemoveCard($index, 5)" ng-if="acctionsCollection.baja_pend" title="Baja de registro pendiente"><i class="fa fa-trash-alt"></i></a>
+						<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnAuthCard($index, 6)" ng-if="acctionsCollection.autorizacion" title="Autorización"><i class="fas fa-check-double"></i></a>
+						<a href="" class="btn btn-default btn-icon btn-circle" ng-click="btnDesAuthCard($index, 7)" ng-if="acctionsCollection.desautorizacion" title="Desautorización"><i class="far fa-times-circle"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end cards -->
+	</div>
+	<!-- end cards panel -->
+
+	<!-- Modal SEARCH INFORMATION-->
+	<div class="modal fade" id="searchModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Buscar Perfil</h4>
+					<a href="" class="btn btn-danger btn-icon btn-circle btn-xs" data-dismiss="modal"><i class="fa fa-times"></i></a>
+					<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:#fff;">×</button> -->
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+		                        <label for="selectVende">Nombre del Perfil</label>
+								<input type="text" class="form-control form-control-sm" placeholder="Nombre del Perfil" ng-model="searchModel.descripcion"/>
+		                      </div>
+						</div>
+						<div class="col-xs-12">
+							<div class="form-group">
+		                        <label for="selectVende">Alias del Perfil</label>
+								<input type="text" class="form-control form-control-sm" placeholder="Alias del Perfil" ng-model="searchModel.codigo"/>
+		                      </div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="padding: 7px;">
+					<a href="javascript:;" class="btn btn-white btn-sm" data-dismiss="modal">Cancelar</a>
+					<a href="javascript:;" class="btn btn-danger btn-sm" ng-click="btnConfirmSearch()">Buscar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal EDIT INFORMATION-->
+	<div class="modal fade" id="editModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Editar Perfil</h4>
+					<a href="" class="btn btn-danger btn-icon btn-circle btn-xs" data-dismiss="modal"><i class="fa fa-times"></i></a>
+					<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:#fff;">×</button> -->
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+		                        <label for="selectVende">Nombre del Perfil</label>
+								<input type="text" class="form-control form-control-sm" placeholder="Nombre del Grupo" ng-model="cardEdit.descripcion" ng-disabled="actionSelected != 2"/>
+		                      </div>
+						</div>
+						<div class="col-xs-12">
+							<div class="form-group">
+		                        <label for="selectVende">Alias del Perfil</label>
+								<input type="text" class="form-control form-control-sm" placeholder="Alias del Perfil" ng-model="cardEdit.codigo" ng-disabled="actionSelected != 2"/>
+		                      </div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="padding: 7px;">
+					<a href="javascript:;" class="btn btn-white btn-sm" data-dismiss="modal">Cancelar</a>
+					<a href="javascript:;" class="btn btn-danger btn-sm" ng-click="btnConfirmEdit(2)" ng-if="actionSelected == 2">Guardar</a>
+					<a href="javascript:;" class="btn btn-danger btn-sm" ng-click="btnConfirmEdit(4)" ng-if="actionSelected == 4">Guardar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal NEW-->
+	<div class="modal fade" id="newModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Nuevo Perfil</h4>
+					<a href="" class="btn btn-danger btn-icon btn-circle btn-xs" data-dismiss="modal"><i class="fa fa-times"></i></a>
+					<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:#fff;">×</button> -->
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+		                        <label for="selectVende">Nombre del Perfil</label>
+								<input type="text" class="form-control form-control-sm" placeholder="Nombre del Perfil" ng-model="newModel.descripcion"/>
+		                      </div>
+						</div>
+						<div class="col-xs-12">
+							<div class="form-group">
+		                        <label for="selectVende">Alias del Perfil</label>
+								<input type="text" class="form-control form-control-sm" placeholder="Alias del Perfil" ng-model="newModel.codigo"/>
+		                      </div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="padding: 7px;">
+					<a href="javascript:;" class="btn btn-white btn-sm" data-dismiss="modal">Cancelar</a>
+					<a href="javascript:;" class="btn btn-danger btn-sm" ng-click="btnConfirmNew()">Guardar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- BUTTON ADD -->
+	<div class="row text-right" style="padding-right: 20px;position: fixed; bottom: 30px;right: 12px;">
+		<a href="" class="btn btn-danger btn-icon btn-circle btn-lg" ng-click="btnAddCardModal()" ng-if="acctionsCollection.alta">
+			<i class="fas fa-plus" ng-click="btnAddCardModal()" ></i>
+		</a>
+    </div>  
+
+
+</div>
+

@@ -1,0 +1,28 @@
+/* GLOBEMIND CSS */
+
+.modal-header {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+    padding-right: 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #000;
+    color: #fff;
+}
+
+.modal-title {
+   font-size: small;
+}
+
+.card-header {
+    text-align: right;
+    padding: 1px;
+    padding-right: 5px;
+}
+
+.card-footer {
+    background-color: #fff;
+    text-align: right;
+    padding: 7px;
+}

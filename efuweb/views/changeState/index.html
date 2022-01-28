@@ -1,0 +1,97 @@
+<!-- begin #content -->
+<div id="content" class="content" style="padding-top: 0px">
+
+    <!-- begin submenu -->
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col text-right">
+        </div>
+    </div>
+    <!-- ends submenu -->
+
+    <h1 class="page-header">Cambio de estados</h1>
+
+    <!-- Upload file 2 -->
+    <div class="row">
+        <div class="col-xs-12" style="margin-bottom: 20px">
+            <!--ng-repeat="card in cardCollection"-->
+            <div class="card border-8" style="border-top: 4px solid red;">
+                <div class="card-body col-xs-12">
+                    <!--Grilla-->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row text-center" ng-show="!stateCollection.length > 0">
+                                <span> No se ha encontrado registros</span>
+                            </div>
+
+                            <table class="table table-striped table-mvss" ng-show="stateCollection.length > 0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ID</th>
+                                        <th>ESTADO</th>
+                                        <th>POLIZA</th>
+                                        <th>COMPAÑIA</th>
+                                        <th>COBERTURA</th>
+                                        <th>PRIMA</th>
+                                        <th>CAMBIO ESTADO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="state in stateCollection">
+                                        <th scope="row">{{$index + 1}}</th>
+                                        <td>{{state.id}}</td>
+                                        <td>{{state.estado}}</td>
+                                        <td>{{state.nroPoliza}}</td>
+                                        <td>{{state.compania}}</td>
+                                        <td>{{state.cobertura}}</td>
+                                        <td>{{state.primaPoliza}}</td>
+                                        <td class="text-center">
+                                            <a href="" title="Cambio Estado" style="color:#00bef1" ng-click="btnCambio($index)">
+                                                <!--<span class="fa fa-th-large"> </span>-->
+                                                <i class="fas fa-wrench" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <!--<a href="" title="Cambio Estado" style="color:#00bef1" ng-click="btnEdit($index)"></a>-->
+                                        <!--<td>
+                                            <a href="" title="Eleminar Cliente" style="color:#00bef1" ng-click="btnDelete($index)">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span></td>
+                                        </a>
+                                        </td>-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--FIN Grilla-->
+            </div>
+        </div>
+    </div>
+    <img ng-if="loading" src="../assets/img/ajax-loader.gif" alt="">
+
+
+</div>
+
+<!-- Modal DELETE -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 0px;background-color: #00bef1;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 10px;color: #fff;"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="color:#fff;font-size:small;margin-left: 10px;"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true" style="margin-right: 5px;"></span> </h4>
+            </div>
+            <div class="modal-body">
+                <div> <strong>Nuevo estado:</strong> </div>
+                <select class="form-control" ng-model="estadoSelected">
+                    <option value="PAGADO_M" selected="selected">PAGADO_M</option>
+                    <option value="DESISTIDA">DESISTIDA</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" ng-click="btnConfirm()">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>
