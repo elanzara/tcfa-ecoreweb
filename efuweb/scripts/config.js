@@ -459,7 +459,6 @@ angular.module('mainapp').factory('setting', ['$rootScope', function($rootScope)
     return setting;
 }]);
 
-
 angular.module('mainapp').run(['$rootScope', '$state', 'setting', function($rootScope, $state, setting) {
     $rootScope.$state = $state;
     $rootScope.setting = setting;
