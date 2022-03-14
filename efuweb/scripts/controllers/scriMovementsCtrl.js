@@ -29,7 +29,7 @@ function ScriMovementsCtrl($scope, $window, $cookies, $location, $stateParams, $
                 //if (response.data[0].vigenciaDesde != "") {
                 if (Object.keys(response.data).length > 0) {
                     $scope.dateFrom = new Date();
-                    $scope.dateFromBBDD = new Date(response.data[0].startDate);
+                    $scope.dateFromBBDD = new Date(response.data[0].jobDate);
                     $scope.dateFrom.setDate($scope.dateFrom.getDate() - 90);
                     if ($scope.dateFromBBDD > $scope.dateFrom) {
                         $scope.dateFromBBDD.setDate($scope.dateFromBBDD.getDate() + 1);
@@ -112,7 +112,7 @@ function ScriMovementsCtrl($scope, $window, $cookies, $location, $stateParams, $
                                         if (response.status == 200) {
                                             if (Object.keys(response.data).length > 0) {
                                                 $scope.dateFrom = new Date();
-                                                $scope.dateFromBBDD = new Date(response.data[0].startDate);
+                                                $scope.dateFromBBDD = new Date(response.data[0].jobDate);
                                                 $scope.dateFrom.setDate($scope.dateFrom.getDate() - 90);
                                                 if ($scope.dateFromBBDD > $scope.dateFrom) {
                                                     $scope.dateFromBBDD.setDate($scope.dateFromBBDD.getDate() + 1);
