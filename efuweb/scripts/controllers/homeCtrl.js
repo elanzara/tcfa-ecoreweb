@@ -78,6 +78,8 @@ function HomeCtrl($scope, $window, $cookies, $location, $stateParams, $state, Ho
             $state.go('app.abm.edicionCobertura', { param: pparam, prespective: 'both' });
         } else if (pprogram == 'abm004') {
             $state.go('app.abm.reporteCobertura', { param: pparam, prespective: 'both' });
+        } else if (pprogram == 'cli001') {
+            $state.go('app.clients.consultaClientes', { param: pparam, prespective: 'both' });
         }
 
 

@@ -430,6 +430,30 @@ angular.module('mainapp').config(['$stateProvider', '$urlRouterProvider', '$tran
                     });
                 }]
             }
+        })
+        .state('app.clients', {
+            url: '/clients',
+            template: '<ui-view></ui-view>',
+            abstract: true
+        })
+        .state('app.clients.consultaClientes', {
+            url: '/consultaClientes',
+            controller: 'consultaClientesCtrl',
+            data: {
+                pageTitle: 'Consulta de Clientes'
+            },
+            templateUrl: 'views/consultaClientes/index.html',
+            resolve: {
+                service: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        serie: true,
+                        files: [
+                            'scripts/services/consultaClientesService.js',
+                            'scripts/controllers/consultaClientesCtrl.js',
+                        ]
+                    });
+                }]
+            }
         });
 }]);
 
