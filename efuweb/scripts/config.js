@@ -8,7 +8,8 @@ angular.module('mainapp', [
     'ui.router.state.events',
     'oc.lazyLoad',
     'pascalprecht.translate',
-    'ngFileUpload', 'ui.bootstrap'
+    'ngFileUpload', 'ui.bootstrap',
+    'ngLoadScript'
 ]);
 
 angular.module('mainapp').config(['$stateProvider', '$urlRouterProvider', '$translateProvider', function($stateProvider, $urlRouterProvider, $translateProvider) {
